@@ -6,6 +6,7 @@ import 'package:bbigfood/bodys/show_order_seller.dart';
 import 'package:bbigfood/main.dart';
 import 'package:bbigfood/models/user_model.dart';
 import 'package:bbigfood/utility/my_constant.dart';
+import 'package:bbigfood/widgets/show_progress.dart';
 import 'package:bbigfood/widgets/show_signout.dart';
 import 'package:bbigfood/widgets/show_title.dart';
 import 'package:dio/dio.dart';
@@ -17,14 +18,12 @@ class SellerService extends StatefulWidget {
 
   @override
   _SellerServiceState createState() => _SellerServiceState();
+
+  void add(ShopManageSeller shopManageSeller) {}
 }
 
 class _SellerServiceState extends State<SellerService> {
-  List<Widget> widgets = [
-    ShowOrderSeller(),
-    ShopManageSeller(),
-    ShowFoodSeller(),
-  ];
+  List<Widget> widgets = [];
   int indexWidget = 0;
   UserModel? userModel;
 
@@ -47,6 +46,9 @@ class _SellerServiceState extends State<SellerService> {
         setState(() {
           userModel = UserModel.fromMap(item);
           print('### name logined = ${userModel!.name}');
+          widgets.add(ShowOrderSeller());
+          widgets.add(ShopManageSeller(userModel: userModel!));
+          widgets.add(ShowFoodSeller());
         });
       }
     });
@@ -58,22 +60,24 @@ class _SellerServiceState extends State<SellerService> {
       appBar: AppBar(
         title: Text('Seller'),
       ),
-      drawer: Drawer(
-        child: Stack(
-          children: [
-            ShowSignOut(),
-            Column(
-              children: [
-                buildHead(),
-                menuShowOrder(),
-                menuShopManage(),
-                menuShowFood(),
-              ],
-            )
-          ],
-        ),
-      ),
-      body: widgets[indexWidget],
+      drawer: widgets.length == 0
+          ? SizedBox()
+          : Drawer(
+              child: Stack(
+                children: [
+                  ShowSignOut(),
+                  Column(
+                    children: [
+                      buildHead(),
+                      menuShowOrder(),
+                      menuShopManage(),
+                      menuShowFood(),
+                    ],
+                  )
+                ],
+              ),
+            ),
+      body: widgets.length == 0 ? ShowProgress() : widgets[indexWidget],
     );
   }
 
@@ -82,9 +86,10 @@ class _SellerServiceState extends State<SellerService> {
         otherAccountsPictures: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.face_outlined),
-            iconSize: 36,
-            color: MyConstant.light,tooltip: 'Edit Shop',
+            icon: Icon(Icons.edit_outlined),
+            iconSize: 30,
+            color: MyConstant.light,
+            tooltip: 'Edit Shop',
           ),
         ],
         decoration: BoxDecoration(
