@@ -2,6 +2,8 @@ import 'package:bbigfood/states/add_food.dart';
 import 'package:bbigfood/states/authen.dart';
 import 'package:bbigfood/states/buyer_service.dart';
 import 'package:bbigfood/states/create_account.dart';
+import 'package:bbigfood/states/edit_information_buyer.dart';
+import 'package:bbigfood/states/edit_information_seller.dart';
 import 'package:bbigfood/states/seller_servive.dart';
 import 'package:bbigfood/utility/my_constant.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,8 @@ final Map<String, WidgetBuilder> map = {
   '/buyerService': (BuildContext context) => BuyerService(),
   '/sellerService': (BuildContext context) => SellerService(),
   '/addFood': (BuildContext context) => AddFood(),
+  '/editInformationSeller': (BuildContext context) => EditInformationSeller(),
+  '/editInformationBuyer': (BuildContext context) => EditInformationBuyer(),
 };
 
 String? initlalRoute;

@@ -285,29 +285,32 @@ class _CreateAccountState extends State<CreateAccount> {
         title: Text('Create New Account'),
         backgroundColor: MyConstant.primary,
       ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-        behavior: HitTestBehavior.opaque,
-        child: Form(
-          key: formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                buildTitle('ข้อมูลทั่วไป'),
-                buildName(size),
-                // buildTitle('ข้อมูลพื้นฐาน'),
-                // buildAddress(size),
-                buildPhone(size),
-                buildUser(size),
-                buildPassword(size),
-                buildTitle('ชนิดของ User :'),
-                buildRadioBuyer(size),
-                buildRadioSeller(size),
-                buildTitle('รูปภาพ'),
-                buildAvatar(size),
-                buildTitle('แสดงพิกัด ที่คุณอยู่'),
-                buidMap(),
-              ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+          behavior: HitTestBehavior.opaque,
+          child: Form(
+            key: formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  buildTitle('ข้อมูลทั่วไป'),
+                  buildName(size),
+                  // buildTitle('ข้อมูลพื้นฐาน'),
+                  // buildAddress(size),
+                  buildPhone(size),
+                  buildUser(size),
+                  buildPassword(size),
+                  buildTitle('ชนิดของ User'),
+                  buildRadioBuyer(size),
+                  buildRadioSeller(size),
+                  buildTitle('รูปภาพ'),
+                  buildAvatar(size),
+                  buildTitle('ตำแหน่งที่ตั้ง'),
+                  buidMap(),
+                ],
+              ),
             ),
           ),
         ),
@@ -402,7 +405,7 @@ class _CreateAccountState extends State<CreateAccount> {
           markerId: MarkerId('id'),
           position: LatLng(lat!, lng!),
           infoWindow: InfoWindow(
-              title: 'คุณอยู่ที่', snippet: 'Lat = $lat, lng = $lng'),
+              title: 'You Here', snippet: 'Lat = $lat, lng = $lng'),
         ),
       }.toSet();
 
@@ -480,7 +483,7 @@ class _CreateAccountState extends State<CreateAccount> {
               });
             },
             title: ShowTitle(
-              title: "ผู้ซื้อ (buyer)",
+              title: "ผู้ซื้อ (Buyer)",
               textStyle: MyConstant().h3Style(),
             ),
           ),
@@ -504,7 +507,7 @@ class _CreateAccountState extends State<CreateAccount> {
               });
             },
             title: ShowTitle(
-              title: "ผู้ขาย (seller)",
+              title: "ผู้ขาย (Seller)",
               textStyle: MyConstant().h3Style(),
             ),
           ),

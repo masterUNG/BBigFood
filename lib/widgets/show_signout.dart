@@ -22,7 +22,7 @@ class ShowSignOut extends StatelessWidget {
           },
           tileColor: Colors.red.shade900,
           leading: Icon(
-            Icons.exit_to_app,
+            Icons.logout,
             size: 36,
             color: Colors.white,
           ),

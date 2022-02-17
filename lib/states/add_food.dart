@@ -75,8 +75,8 @@ class _AddFoodState extends State<AddFood> {
   }
 
   Container addFoodButton(BoxConstraints constraints) {
-    return Container(
-      width: constraints.maxWidth * 0.75,
+    return Container(margin: EdgeInsets.symmetric(vertical: 16),
+      width: constraints.maxWidth * 0.6,
       child: ElevatedButton(
         style: MyConstant().myButtonStyle(),
         onPressed: () {

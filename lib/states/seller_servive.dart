@@ -45,7 +45,6 @@ class _SellerServiceState extends State<SellerService> {
       for (var item in json.decode(value.data)) {
         setState(() {
           userModel = UserModel.fromMap(item);
-          print('### name logined = ${userModel!.name}');
           widgets.add(ShowOrderSeller());
           widgets.add(ShopManageSeller(userModel: userModel!));
           widgets.add(ShowFoodSeller());
@@ -115,7 +114,11 @@ class _SellerServiceState extends State<SellerService> {
           Navigator.pop(context);
         });
       },
-      leading: Icon(Icons.filter_1),
+      leading: Icon(
+        Icons.list,
+        size: 36,
+        color: MyConstant.dart,
+      ),
       title: ShowTitle(
         title: 'Show Order',
         textStyle: MyConstant().h2Style(),
@@ -134,7 +137,11 @@ class _SellerServiceState extends State<SellerService> {
           Navigator.pop(context);
         });
       },
-      leading: Icon(Icons.filter_2),
+      leading: Icon(
+        Icons.store,
+        size: 36,
+        color: MyConstant.dart,
+      ),
       title: ShowTitle(
         title: 'Shop Manage',
         textStyle: MyConstant().h2Style(),
@@ -153,7 +160,11 @@ class _SellerServiceState extends State<SellerService> {
           Navigator.pop(context);
         });
       },
-      leading: Icon(Icons.filter_3),
+      leading: Icon(
+        Icons.restaurant_menu,
+        size: 36,
+        color: MyConstant.dart,
+      ),
       title: ShowTitle(
         title: 'Show Food Menu',
         textStyle: MyConstant().h2Style(),
