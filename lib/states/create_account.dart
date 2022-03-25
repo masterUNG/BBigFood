@@ -36,7 +36,7 @@ class _CreateAccountState extends State<CreateAccount> {
     checkPermission();
   }
 
-  Future<Null> checkPermission() async {
+  Future<void> checkPermission() async {
     bool locationService;
     LocationPermission locationPermission;
 

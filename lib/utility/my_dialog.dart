@@ -8,6 +8,9 @@ import 'package:geolocator/geolocator.dart';
 
 class MyDialog {
 
+
+  
+
   Future<Null> showProgressDialog(BuildContext context) async {
     showDialog(
       context: context,

@@ -12,6 +12,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'show_shopping_cart.dart';
+
 class BuyerService extends StatefulWidget {
   const BuyerService({Key? key}) : super(key: key);
 
@@ -54,6 +56,15 @@ class _BuyerServiceState extends State<BuyerService> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ShowShoppingCart(),
+                  )),
+              icon: Icon(Icons.shopping_cart_outlined))
+        ],
         title: Text('Buyer'),
       ),
       drawer: widgets.length == 0
