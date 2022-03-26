@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bbigfood/states/add_food.dart';
 import 'package:bbigfood/states/authen.dart';
 import 'package:bbigfood/states/buyer_service.dart';
@@ -22,6 +24,8 @@ final Map<String, WidgetBuilder> map = {
 String? initlalRoute;
 
 Future<Null> main() async {
+  HttpOverrides.global = MyHttpOvverrides();
+
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
   String? type = preferences.getString('type');
@@ -57,5 +61,13 @@ class MyApp extends StatelessWidget {
       initialRoute: initlalRoute,
       theme: ThemeData(primarySwatch: materialColor),
     );
+  }
+}
+
+class MyHttpOvverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (cert, host, port) => true;
   }
 }
